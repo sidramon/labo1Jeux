@@ -4,7 +4,8 @@ class Ball extends GraphicObject
   float topSpeed;
   float mass;
   
-  Ball () {
+  Ball () 
+  {
     
     location = new PVector (random (width), random(height));
     velocity = new PVector (0, 0);
@@ -14,7 +15,8 @@ class Ball extends GraphicObject
     mass = 1;
   }  
   
-  Ball (PVector l, PVector v) {
+  Ball (PVector l, PVector v) 
+  {
     location = l;
     velocity = v;
     acceleration = new PVector (0 , 0);
@@ -22,7 +24,8 @@ class Ball extends GraphicObject
     topSpeed = 100;
   }
   
-  Ball (float m, float x, float y) {
+  Ball (float m, float x, float y) 
+  {
     mass = m;
     location = new PVector (x, y);
     
@@ -31,14 +34,16 @@ class Ball extends GraphicObject
     size = new PVector (16, 16);
   }
   
-  void update () {
+  void update () 
+  {
     velocity.add (acceleration);
     location.add (velocity);
 
     acceleration.mult (0);
   }
   
-  void display () {
+  void display () 
+  {
     stroke (0);
     fill (127, 127, 127, 127);
     
@@ -52,7 +57,7 @@ class Ball extends GraphicObject
       location.x = width - size.x/2*mass;
       velocity.x *= -1;
     } 
-    else if (location.x - size.x/2 < 0) 
+    else if (location.x - size.x/2*mass < 0) 
     {
       velocity.x *= -1;
       location.x = 0 + size.x/2*mass;
@@ -60,25 +65,27 @@ class Ball extends GraphicObject
     
     if (location.y + size.y/2*mass > height) 
     {
-      velocity.y *= -1;
+      velocity.y *= -.9;
       location.y = height - size.y/2*mass;
     }
     
-    if (location.y - size.y/2*mass < 0) 
+    if (location.y - size.y/2*mass < 1) 
     {
       velocity.y *= -.6;
-      location.y = 0 + size.x/2*mass;
+      location.y = 1 + size.y/2*mass;
     }
   }
   
   
-  void applyForce (PVector force) {
+  void applyForce (PVector force) 
+  {
     PVector f = PVector.div (force, mass);
    
     acceleration.add(f);
   }
   
-  Rectangle getRectangle() {
+  Rectangle getRectangle() 
+  {
     Rectangle r = new Rectangle(location.x, location.y, size.x, size.y);
     
     return r;

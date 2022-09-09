@@ -19,7 +19,7 @@ void setup ()
   fluid = new Fluid();
   fluidOn = false;
   
-  balloon = new Balloon(helium);
+  balloon = new Balloon();
   
   stroke (0);
   fill (175);
@@ -42,7 +42,7 @@ void update()
   balloon.update();
   balloon.applyForce(helium);
   PVector bFriction = balloon.velocity.copy();
-  bFriction.mult(-0.9);
+  bFriction.mult(-1);
   bFriction.normalize();
   bFriction.mult(0.01);
   balloon.applyForce(bFriction);
@@ -66,7 +66,7 @@ void update()
       balls[i].applyForce(wind);
     }
     
-    friction.mult(-0.9);
+    friction.mult(-1);
     friction.normalize();
     friction.mult(0.01);
     

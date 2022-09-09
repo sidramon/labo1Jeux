@@ -1,13 +1,13 @@
 class Balloon extends Ball
 {
-  Balloon(PVector h)
+  Balloon()
   {
     location = new PVector(width/2, height/2);
     velocity = new PVector(0, 0);
-    velocity.add(h);
     acceleration = new PVector(0, 0);
-    mass = 1;
     size = new PVector(50, 50);
+    
+    mass = 1;
     
     fillColor = color (255, 0, 0, 130);
     strokeColor = color (0);
